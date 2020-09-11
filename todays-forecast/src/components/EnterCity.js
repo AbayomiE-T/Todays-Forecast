@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Weather from './Weather'
+import { connect } from 'react-redux';
+import { getCity } from '../actions/cityActions'
 
 class EnterCity extends Component {
 
@@ -19,7 +21,7 @@ class EnterCity extends Component {
 
         const { city } = this.state;
 
-        console.log(city.trim())
+        this.props.getCity(city.trim())
 
         this.setState({
             city: ''
@@ -43,4 +45,8 @@ class EnterCity extends Component {
     }
 }
 
-export default EnterCity
+const mapStateToProps = state => ({
+    city: state.city.city
+})
+
+export default connect(mapStateToProps, { getCity })(EnterCity)
