@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Weather from './Weather'
 import { connect } from 'react-redux';
-import { getCity } from '../actions/cityActions'
+import { getCity } from '../actions/weatherActions'
 
 class EnterCity extends Component {
 
@@ -39,14 +39,14 @@ class EnterCity extends Component {
                         <input type="text" className="form-control" id="city" onChange={this.handleChange} value={city} />
                     </div>
                 </form>
-                <Weather />
+                <Weather city={this.props.city} />
             </Fragment>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    city: state.city.city
+    city: state.city.city,
 })
 
 export default connect(mapStateToProps, { getCity })(EnterCity)

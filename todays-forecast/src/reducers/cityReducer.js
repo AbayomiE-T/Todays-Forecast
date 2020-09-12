@@ -1,7 +1,7 @@
-import { GET_CITY, GET_WEATHER } from '../actions/types'
+import { GET_CITY } from '../actions/types'
 
 const initialState = {
-    city: {}
+    city: null
 }
 
 export default function (state = initialState, action) {
@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
 
             return {
                 ...state,
-                city: action.data
+                city: action.data[0]
             }
         default:
             return state;
