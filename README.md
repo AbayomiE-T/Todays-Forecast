@@ -1,5 +1,9 @@
 # Todays-Forecast
+<<<<<<< HEAD
 This is a React-Redux application that gets weather data from the AccuWeather API. It gives you information about current weather conditions and a 5 day forecast 
+=======
+This is a React-Redux application that gets weather data from the AccuWeather API. It gives you information about current weather conditions and a 5 day forecast
+>>>>>>> 9daeb029e76d5365ef4d4be013cb625299ba7fd3
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
