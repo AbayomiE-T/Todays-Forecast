@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm install`
-type in this command to install all the dependencies for the project in the project directory before using "npm start" 
+type in this command in the 'todays-forecast' to install all the dependencies for the project in the project directory before using "npm start" 
 
 ### `npm start`
 
