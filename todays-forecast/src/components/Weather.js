@@ -102,7 +102,7 @@ class Weather extends Component {
                             <div className="my-3">Weather condition</div>
                             <div className="display-4 my-4">
                                 <span>temp</span>
-                                <span>&deg;F</span>
+                                <span>&deg;C</span>
                             </div>
                         </div>
                     </div>
