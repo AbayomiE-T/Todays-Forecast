@@ -25,6 +25,14 @@ class Weather extends Component {
 
     returnDay(index) {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+        if (index === 7) {
+            index -= 7
+        }
+        else if (index > 7) {
+            index -= 7
+        }
+
         return days[index]
     }
 
