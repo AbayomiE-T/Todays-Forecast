@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getCurrConditions, getForecast } from '../actions/weatherActions'
 import Day from '../images/day.svg'
 import Night from '../images/night.svg'
+import WeatherDetails from './WeatherDetails'
 
 class Weather extends Component {
 
@@ -48,41 +49,32 @@ class Weather extends Component {
 
             const date = new Date()
             let index = date.getDay()
+            const temperature = this.toCelcius(Temperature.Imperial.Value)
+
             return (
                 <Fragment>
                     <div className="text-uppercase text-center display-4 mb-3">Current condition</div>
-                    <div className="d-flex justify-content-center mb-3">
-                        <div className="card">
-                            <img src={image} alt="" className="card-img-top" />
-                            <div className="icon bg-light mx-auto text-center" style={{ height: "100px", backgroundImage: 'url(' + require(`../images/icons/${WeatherIcon}.svg`) + ')' }}>
 
-                            </div>
-                            <div className="card-body text-uppercase text-center">
-                                <h5 className="my-3">{city.EnglishName}</h5>
-                                <div className="my-3">{WeatherText}</div>
-                                <div className="display-4 my-4">
-                                    <span>{this.toCelcius(Temperature.Imperial.Value)}</span>
-                                    <span>&deg;C</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <WeatherDetails
+                        timeOfDay={image}
+                        icon={WeatherIcon}
+                        city={city.EnglishName}
+                        text={WeatherText}
+                        temperature={temperature}
+                    />
 
                     <div className="text-uppercase text-center display-4 mb-5">5 day forecast</div>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex flex-column justify-content-between align-items-center">
                         {DailyForecasts.map(forecast => (
-                            <div className="card" key={id++}>
-                                <div className="text-uppercase text-center display-4 mb-5">{this.returnDay(index++)}</div>
-                                <div className="icon bg-light mx-auto text-center" style={{ height: "100px", backgroundImage: 'url(' + require(`../images/icons/${forecast.Day.Icon}.svg`) + ')' }}></div>
-                                <div className="card-body text-uppercase text-center">
-                                    <div className="my-3">{forecast.Day.IconPhrase}</div>
-                                    <div className="display-4 my-4">
-                                        <span>Max: {this.toCelcius(forecast.Temperature.Maximum.Value)}</span>
-                                        <span>&deg;C</span><br />
-                                        <span>Min: {this.toCelcius(forecast.Temperature.Minimum.Value)}</span>
-                                        <span>&deg;C</span>
-                                    </div>
+                            <div className="card py-3 c-card d-block" key={id++}>
+                                <div className="text-uppercase text-center display-4 size">{this.returnDay(index++)}</div>
+                                <div className="display-4 size">
+                                    <span>{this.toCelcius(forecast.Temperature.Maximum.Value)}</span>
+                                    <span>&deg;C</span>
+                                    <span className="low">{this.toCelcius(forecast.Temperature.Minimum.Value)}</span>
+                                    <span className="low">&deg;C</span>
                                 </div>
+                                <div className="c-icon bg-light text-center" style={{ backgroundImage: 'url(' + require(`../images/icons/${forecast.Day.Icon}.svg`) + ')' }}></div>
                             </div>
                         ))
 
@@ -94,21 +86,14 @@ class Weather extends Component {
 
         else {
             return (
-                <div className="d-flex justify-content-center">
-                    <div className="card">
-                        <img src="https://via.placeholder.com/400x300" alt="" className="card-img-top" />
-                        <div className="card-body text-uppercase text-center">
-                            <h5 className="my-3">City name</h5>
-                            <div className="my-3">Weather condition</div>
-                            <div className="display-4 my-4">
-                                <span>temp</span>
-                                <span>&deg;C</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <WeatherDetails
+                    timeOfDay="https://via.placeholder.com/400x300"
+                    icon=""
+                    city="City Name"
+                    text=""
+                    temperature="Temp"
+                />
             )
-
         }
     }
 }

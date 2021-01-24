@@ -17,7 +17,35 @@ code {
 }
 
 .card{
-  max-width: 400px;
+  width: 400px;
+}
+
+.c-card{
+  position: relative;
+  width: 95% !important;
+  margin-bottom: 32px;
+  height: 150px;
+}
+
+.c-card > div:nth-of-type(1){
+position: absolute;
+top: 50%;
+left: 1rem;
+transform: translateY(-50%);
+}
+
+.c-card > div:nth-of-type(2){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.c-card > div:nth-of-type(3){
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
 }
 
 .icon{
@@ -26,4 +54,62 @@ code {
   border-radius: 50%;
   width: 100px;
   margin-bottom: -50px;
+}
+
+.c-icon{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.low{
+  color: #6e6e6e;
+}
+
+.size > span:nth-of-type(3)::before{
+  content: "\A";
+  white-space: pre;
+}
+
+
+@media only screen and (max-width: 980px){
+  .size{
+    font-size: 2.5rem;
+  }
+
+  .c-icon{
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .size{
+    font-size: 1.5rem;
+  }
+
+}
+
+@media only screen and (max-width: 600px){
+  .card{
+    width: 95%;
+  }
+
+  .display-4{
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .size{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 325px){
+  .size{
+    font-size: 0.8rem;
+  }
+
 }
